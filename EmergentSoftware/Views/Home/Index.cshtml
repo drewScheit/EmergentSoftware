@@ -1,0 +1,45 @@
+﻿@model EmergentSoftware.Models.SoftwareList
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Software Version Search</h1>
+
+<form>
+    <p>
+        <input type="text" placeholder="Software Version" asp-for="SearchString" />
+        <input type="submit" value="Search" />
+    </p>
+</form>
+
+@{ 
+    if (Model != null)
+    {
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        Name
+                    </th>
+                    <th>
+                        Version
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var software in Model.softwares)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => software.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => software.Version)
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+}
